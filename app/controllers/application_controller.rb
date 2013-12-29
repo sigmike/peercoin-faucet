@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
     cmd << Rails.application.config.ppcoind
     cmd << command.to_s
     cmd += args
+    cmd.map!(&:to_s)
     out, err, status = Open3.capture3(*cmd)
     if status != 0
       raise "#{args.inspect}: #{err}"

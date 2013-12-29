@@ -1,1 +1,2 @@
-%pre= ppcoind(:getbalance).inspect
+%p Balance: #{ppcoind(:getbalance)}
+%p Address: #{ppcoind(:getaccountaddress, "")}
