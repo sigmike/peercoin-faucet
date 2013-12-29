@@ -20,6 +20,6 @@
 # Learn more: http://github.com/javan/whenever
 
 every :reboot do
-  command File.expand_path("../../ppcoin/src/ppcoind", __FILE__)
+  command File.expand_path("../../../ppcoin/src/ppcoind", __FILE__)
 end
 
