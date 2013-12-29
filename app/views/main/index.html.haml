@@ -1,2 +1,4 @@
 %p Balance: #{ppcoind(:getbalance)}
 %p Address: #{ppcoind(:getaccountaddress, "")}
+%p Transactions:
+%pre= ppcoind(:listtransactions, "")
