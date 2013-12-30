@@ -2,3 +2,13 @@
 %p Address: #{Peercoin.run(:getaccountaddress, "")}
 %p Transactions:
 %pre= Peercoin.run(:listtransactions, "")
+.request-form
+  %h1 Request PeerCoins
+  = form_for @coin_request, url: url_for do |f|
+    - if @coin_request.errors.any?
+      %ul.errors
+        - @coin_request.errors.full_messages.each do |error|
+          %li.error= error
+    = f.label :address
+    = f.text_field :address
+    = f.submit
