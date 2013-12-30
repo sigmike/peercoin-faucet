@@ -26,6 +26,9 @@ module PeercoinFaucet
     # config.i18n.default_locale = :de
 
     config.sass.preferred_syntax = :sass
+
+    config.autoload_paths += %W(#{config.root}/lib)
+    
     config.ppcoind = "ppcoind"
   end
 end
