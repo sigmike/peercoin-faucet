@@ -49,3 +49,4 @@ gem 'therubyracer'
 gem 'secret_token_replacer', :git => 'git://github.com/digineo/secret_token_replacer.git'
 gem 'pg', group: :production
 gem 'whenever'
+gem 'foundation-rails'
