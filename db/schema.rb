@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131230215702) do
+ActiveRecord::Schema.define(version: 20140103191658) do
 
   create_table "coin_requests", force: true do |t|
     t.string   "address"
-    t.string   "ip"
-    t.boolean  "processed",  default: false
+    t.boolean  "processed",        default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "uniqueness_token"
   end
 
 end
