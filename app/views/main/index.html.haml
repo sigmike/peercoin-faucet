@@ -11,4 +11,5 @@
           %li.error= error
     = f.label :address
     = f.text_field :address
+    = recaptcha_tags ssl: request.ssl?, ajax: true
     = f.submit

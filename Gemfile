@@ -50,3 +50,4 @@ gem 'secret_token_replacer', :git => 'git://github.com/digineo/secret_token_repl
 gem 'pg', group: :production
 gem 'whenever'
 gem 'foundation-rails'
+gem "recaptcha", :require => "recaptcha/rails"

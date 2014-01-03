@@ -3,6 +3,8 @@ class MainController < ApplicationController
     @coin_request = CoinRequest.new
     @coin_request.attributes = params[:coin_request].permit(:address) if params[:coin_request]
     if request.post? or request.put?
+      return unless verify_recaptcha(model: @coin_request)
+
       ip = request.remote_ip
 
       # Ensure the client can actually receive data at this IP
