@@ -1,7 +1,5 @@
 %p Balance: #{Peercoin.balance}
 %p Address: #{Peercoin.run(:getaccountaddress, "")}
-%p Transactions:
-%pre= Peercoin.run(:listtransactions, "")
 .request-form
   %h1 Request Coins
   = form_for @coin_request, url: url_for do |f|
@@ -14,3 +12,5 @@
     - if CONFIG["captcha"]
       = recaptcha_tags ssl: request.ssl?, ajax: true
     = f.submit
+%p Transactions:
+%pre= Peercoin.run(:listtransactions, "")
