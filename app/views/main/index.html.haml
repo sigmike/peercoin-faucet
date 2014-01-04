@@ -1,16 +1,42 @@
-%p Balance: #{@state.balance}
-%p Address: #{@state.address}
-.request-form
-  %h1 Request Coins
-  = form_for @coin_request, url: url_for do |f|
-    - if @coin_request.errors.any?
-      %ul.errors
-        - @coin_request.errors.full_messages.each do |error|
-          %li.error= error
-    = f.label :address
-    = f.text_field :address
-    - if FaucetConfig["captcha"]
-      = recaptcha_tags ssl: request.ssl?, ajax: true
-    = f.submit
-%p Transactions:
-%pre= @state.last_transactions.inspect
+%header
+  %h1.title Peercoin Faucet
+  %p.intro On this site you can give or receive free Peercoins
+%section.give-section
+  %h2.title Give Peercoins
+  %p.current-balance Balance: #{@state.balance}
+  %p.address Address: #{@state.address}
+%section.receive-section
+  %h2.title Receive Peercoins
+  .receive-form
+    = form_for @coin_request, url: url_for do |f|
+      - if @coin_request.errors.any?
+        %ul.errors
+          - @coin_request.errors.full_messages.each do |error|
+            %li.error= error
+      = f.label :address
+      = f.text_field :address
+      - if FaucetConfig["captcha"]
+        = recaptcha_tags ssl: request.ssl?, ajax: true
+      = f.submit
+%section.last-transactions-section
+  %h2.title Last transactions
+  %table.transaction-list
+    %thead
+      %tr
+        %th.date Date
+        %th.category Category
+        %th.amount Amount
+        %th.address Address
+        %th.confirmations Confirmations
+        %th.fee Fee
+        %th.id ID
+    %tbody
+      - (@state.last_transactions || []).each do |transaction|
+        %tr.transaction-row
+          %td.date= l(Time.at(transaction["time"]))
+          %td.category= transaction["category"].humanize
+          %td.amount= transaction["amount"]
+          %td.address= transaction["address"]
+          %td.confirmations= transaction["confirmations"]
+          %td.fee= transaction["fee"]
+          %td.id= transaction["txid"]
