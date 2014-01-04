@@ -32,7 +32,7 @@ class CoinRequest < ActiveRecord::Base
     balance = Peercoin.balance
     logger.info "Balance: #{balance}"
 
-    amount_per_request = CONFIG["amount_per_request"]
+    amount_per_request = FaucetConfig["amount_per_request"]
     raise "No amount per request provided in config" unless amount_per_request
     logger.info "Amount per request: #{amount_per_request}"
 
@@ -56,7 +56,7 @@ class CoinRequest < ActiveRecord::Base
       logger.info "Sending #{recipients.inspect}"
 
       begin
-        Peercoin.send_many(recipients, minimum_confirmations: CONFIG["minimum_confirmations"])
+        Peercoin.send_many(recipients, minimum_confirmations: FaucetConfig["minimum_confirmations"])
         logger.info "Marking as fulfilled"
         requests.each do |request|
           request.update_attribute(:fulfilled, true)

@@ -9,7 +9,7 @@
           %li.error= error
     = f.label :address
     = f.text_field :address
-    - if CONFIG["captcha"]
+    - if FaucetConfig["captcha"]
       = recaptcha_tags ssl: request.ssl?, ajax: true
     = f.submit
 %p Transactions:
