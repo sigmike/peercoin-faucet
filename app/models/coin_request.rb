@@ -56,7 +56,7 @@ class CoinRequest < ActiveRecord::Base
       logger.info "Sending #{recipients.inspect}"
 
       begin
-        Peercoin.send_many(recipients, minimum_confirmations: FaucetConfig["minimum_confirmations"])
+        Peercoin.send_many(recipients)
         logger.info "Marking as fulfilled"
         requests.each do |request|
           request.update_attribute(:fulfilled, true)

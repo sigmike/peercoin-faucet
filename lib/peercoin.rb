@@ -37,20 +37,33 @@ module Peercoin
     JSON.parse(run("validateaddress", address))["isvalid"]
   end
 
+  def account
+    FaucetConfig["ppcoind_account"] || ""
+  end
+
+  def minimum_confirmations
+    FaucetConfig["minimum_confirmations"] || 1
+  end
+  alias_method :minconf, :minimum_confirmations
+
+  def address
+    run(:getaccountaddress, account)
+  end
+
   def balance
-    run(:getbalance).to_f
+    run(:getbalance, account, minimum_confirmations).to_f
   end
 
   class InsufficientFunds < StandardError
   end
 
-  def send_many(recipients, options = {})
+  def send_many(recipients)
     command = [
       :sendmany,
-      "",
+      account,
       recipients.to_json,
     ]
-    command << (options[:minimum_confirmations] || 1)
+    command << minimum_confirmations
     begin
       run(*command)
     rescue RPCError => e

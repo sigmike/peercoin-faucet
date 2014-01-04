@@ -1,5 +1,5 @@
 %p Balance: #{Peercoin.balance}
-%p Address: #{Peercoin.run(:getaccountaddress, "")}
+%p Address: #{Peercoin.address}
 .request-form
   %h1 Request Coins
   = form_for @coin_request, url: url_for do |f|
