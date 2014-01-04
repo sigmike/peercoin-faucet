@@ -1,3 +1,27 @@
 // Place all the styles related to the main controller here.
 // They will automatically be included in application.css.
 // You can use Sass here: http://sass-lang.com/
+
+@import "foundation"
+
+.main-header
+  +grid-row
+
+  .header-content
+    +grid-column(12)
+    
+.main-content
+  +grid-row
+  
+  .receive-section, .give-section
+    +grid-column(6)
+
+.bottom-section
+  +grid-row
+  
+  .state-section
+    +grid-column(12)
+
+.receive-form
+  input[type=submit]
+    +button
