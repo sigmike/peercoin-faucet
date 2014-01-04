@@ -1,5 +1,7 @@
 class MainController < ApplicationController
   def index
+    @state = State.instance
+
     @coin_request = CoinRequest.new
     @coin_request.attributes = params[:coin_request].permit(:address) if params[:coin_request]
     if request.post? or request.put?

@@ -1,6 +1,5 @@
-- state = State.instance
-%p Balance: #{state.balance}
-%p Address: #{state.address}
+%p Balance: #{@state.balance}
+%p Address: #{@state.address}
 .request-form
   %h1 Request Coins
   = form_for @coin_request, url: url_for do |f|
@@ -14,4 +13,4 @@
       = recaptcha_tags ssl: request.ssl?, ajax: true
     = f.submit
 %p Transactions:
-%pre= state.last_transactions.inspect
+%pre= @state.last_transactions.inspect
