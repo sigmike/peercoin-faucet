@@ -1,5 +1,6 @@
-%p Balance: #{Peercoin.balance}
-%p Address: #{Peercoin.address}
+- state = State.instance
+%p Balance: #{state.balance}
+%p Address: #{state.address}
 .request-form
   %h1 Request Coins
   = form_for @coin_request, url: url_for do |f|
@@ -13,4 +14,4 @@
       = recaptcha_tags ssl: request.ssl?, ajax: true
     = f.submit
 %p Transactions:
-%pre= Peercoin.run(:listtransactions, "")
+%pre= state.last_transactions.inspect

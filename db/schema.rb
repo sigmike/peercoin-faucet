@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140104110418) do
+ActiveRecord::Schema.define(version: 20140104180007) do
 
   create_table "coin_requests", force: true do |t|
     t.string   "address"
@@ -20,6 +20,14 @@ ActiveRecord::Schema.define(version: 20140104110418) do
     t.datetime "updated_at"
     t.string   "uniqueness_token"
     t.boolean  "fulfilled",        default: false
+  end
+
+  create_table "states", force: true do |t|
+    t.string   "address"
+    t.float    "balance"
+    t.text     "last_transactions"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

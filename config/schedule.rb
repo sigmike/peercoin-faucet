@@ -21,6 +21,7 @@
 
 every :reboot do
   command File.expand_path("../../../ppcoin/src/ppcoind", __FILE__)
+  rake "update_state:loop"
 end
 
 require File.expand_path('../../lib/faucet_config', __FILE__)
