@@ -23,3 +23,9 @@ every :reboot do
   command File.expand_path("../../../ppcoin/src/ppcoind", __FILE__)
 end
 
+require File.expand_path('../../lib/faucet_config', __FILE__)
+frame_time = FaucetConfig.request_time_frame_duration.seconds.floor
+every frame_time do
+  rake "fulfill"
+end
+

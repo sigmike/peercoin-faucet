@@ -1,5 +1,6 @@
 
-FaucetConfig = YAML.load(Rails.root.join('config/config.yml').read)
+path = File.expand_path('../../config/config.yml', __FILE__)
+FaucetConfig = YAML.load(File.read(path))
 
 def FaucetConfig.request_time_frame_duration
   amount, unit = self["request_time_frame_duration"].split
