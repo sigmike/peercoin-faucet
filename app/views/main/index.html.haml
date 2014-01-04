@@ -1,4 +1,4 @@
-%p Balance: #{Peercoin.run(:getbalance)}
+%p Balance: #{Peercoin.balance}
 %p Address: #{Peercoin.run(:getaccountaddress, "")}
 %p Transactions:
 %pre= Peercoin.run(:listtransactions, "")
