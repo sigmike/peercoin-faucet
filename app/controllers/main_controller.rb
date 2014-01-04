@@ -13,7 +13,8 @@ class MainController < ApplicationController
       # (session cookie is signed, so it cannot be forged)
       raise "Invalid IP" unless session[:ip] == ip
 
-      time_frame = (Time.now.to_i / FaucetConfig.request_time_frame_duration).floor
+      frame_duration = FaucetConfig.request_time_frame_duration
+      time_frame = (Time.now.to_i / frame_duration).floor * frame_duration
 
       uniqueness_data = [time_frame, ip].to_yaml
       @coin_request.uniqueness_token = Digest::SHA1.hexdigest(uniqueness_data)

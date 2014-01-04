@@ -24,7 +24,7 @@ every :reboot do
 end
 
 require File.expand_path('../../lib/faucet_config', __FILE__)
-frame_time = FaucetConfig.request_time_frame_duration.seconds.floor
+frame_time = FaucetConfig.request_time_frame_duration.seconds
 every frame_time do
   rake "fulfill"
 end

@@ -16,6 +16,6 @@ def FaucetConfig.request_time_frame_duration
   else
     raise "Invalid time unit: #{unit.inspect}"
   end
-  amount
+  amount.floor
 end
 
