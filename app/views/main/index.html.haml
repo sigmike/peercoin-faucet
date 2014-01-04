@@ -3,7 +3,7 @@
 %p Transactions:
 %pre= Peercoin.run(:listtransactions, "")
 .request-form
-  %h1 Request PeerCoins
+  %h1 Request Coins
   = form_for @coin_request, url: url_for do |f|
     - if @coin_request.errors.any?
       %ul.errors
