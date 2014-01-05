@@ -9,14 +9,19 @@
       .receive-form
         = form_for @coin_request, url: url_for do |f|
           - if @coin_request.errors.any?
-            %ul.errors
-              - @coin_request.errors.full_messages.each do |error|
-                %li.error= error
-          = f.label :address
-          = f.text_field :address
+            .errors
+              .intro Some errors blocked your request:
+              .list
+                - @coin_request.errors.full_messages.each do |error|
+                  .error= error
+          .address-field
+            = f.label :address, "Your Peercoin address"
+            = f.text_field :address
           - if FaucetConfig["captcha"]
-            = recaptcha_tags ssl: request.ssl?, ajax: true
-          = f.submit "Receive Peercoins"
+            .captcha
+              = recaptcha_tags ssl: request.ssl?, ajax: true
+          .submit
+            = f.submit "Receive Peercoins"
   %article.give-section
     .content
       %h2.title Give Peercoins

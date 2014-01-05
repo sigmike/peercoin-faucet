@@ -35,6 +35,15 @@
     > .content
       +panel
 
+      .errors
+        +alert($alert-color)
+        +radius
+
+        .intro
+          @extend strong
+        .intro, .error
+          @extend p
+          color: white
 .bottom-section
   +grid-row
   
@@ -42,6 +51,11 @@
     +grid-column(12)
 
 .receive-form
+  #recaptcha_area
+    margin: auto
+  .submit
+    text-align: center
+    margin-top: 12px
   input[type=submit]
     +button
 
@@ -49,3 +63,4 @@
 #recaptcha_area input[type="text"]
   display: inline-block
   height: auto
+
