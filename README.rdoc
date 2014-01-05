@@ -13,7 +13,7 @@ These instructions are not complete. Please create an issue or send me an email 
 
 == Author
 
-Michael Witrant <mike+peercoinfaucet@lepton.fr>
+{Michael Witrant}[mailto:mike+peercoinfaucet@lepton.fr]
 
 If you want to donate for this project, send
 * Bitcoins to 1pfUuPS7sfY5TY3Wh5B91tqjxcvwDPLH1
