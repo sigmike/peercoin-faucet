@@ -1,28 +1,21 @@
-== README
+== Peercoin Faucet
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A Rails application to run a {peercoin}[http://en.wikipedia.org/wiki/Peercoin] {faucet}[https://en.bitcoin.it/wiki/Bitcoin_faucet] website.
 
-Things you may want to cover:
+To run your own you need:
+* Ruby 1.9+
+* bundler
+* ppcoind running
+* config/config.yml (see config/config.yml.example)
+* a database and config/database.yml configured
 
-* Ruby version
+These instructions are not complete. Please create an issue or send me an email if you want to run your own faucet. It should motivate me to write a complete guide.
 
-* System dependencies
+== Author
 
-* Configuration
+Michael Witrant <mike+peercoinfaucet@lepton.fr>
 
-* Database creation
+If you want to donate for this project, send
+* Bitcoins to 1pfUuPS7sfY5TY3Wh5B91tqjxcvwDPLH1
+* Peercoins to PAkkURv3ZxYDMiU2qYjyYZj3ENGcM2eAR5
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
