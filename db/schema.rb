@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140104180007) do
+ActiveRecord::Schema.define(version: 20140105094603) do
 
   create_table "coin_requests", force: true do |t|
     t.string   "address"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20140104180007) do
     t.text     "last_transactions"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "info",              limit: 1024
   end
 
 end

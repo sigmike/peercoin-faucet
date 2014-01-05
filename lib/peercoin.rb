@@ -78,4 +78,8 @@ module Peercoin
   def transactions
     JSON.parse(run(:listtransactions))
   end
+
+  def info
+    JSON.parse(run(:getinfo))
+  end
 end
