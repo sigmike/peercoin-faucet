@@ -9,3 +9,4 @@ recaptcha:
   private_key: YOUR RECAPTCHA PRIVATE KEY
 donation_address: PAkkURv3ZxYDMiU2qYjyYZj3ENGcM2eAR5
 donation_currency: peercoins
+google_analytics_account: UA-XXX (or empty)
