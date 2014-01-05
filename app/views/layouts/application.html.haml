@@ -8,8 +8,12 @@
     = javascript_include_tag "vendor/modernizr"
     = csrf_meta_tags
   %body
-    - flash.each do |kind, message|
-      .flash{class: kind}= message
-        %a.close{:href => "#"} &times;
+    - if flash.any?
+      %section#flashes
+        - flash.each do |kind, message|
+          .flash-container
+            .flash{class: kind}
+              = message
+              %a.close{:href => "#"} &times;
     = yield
     = javascript_include_tag "application", "data-turbolinks-track" => true

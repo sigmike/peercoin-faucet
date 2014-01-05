@@ -4,6 +4,22 @@
 
 @import "foundation_and_overrides"
 
+#flashes
+  +grid-row
+  .flash-container
+    +grid-column($columns: 12, $center: true)
+    .flash
+      margin-top: 6px
+      margin-bottom: 6px
+      +alert-base
+      +radius
+      .close
+        +alert-close
+      &.error
+        +alert-style($alert-color)
+      &.success
+        +alert-style($success-color)
+
 .main-header
   +grid-row
 
