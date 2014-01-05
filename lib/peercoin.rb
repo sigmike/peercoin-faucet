@@ -10,7 +10,7 @@ module Peercoin
 
   def run(command, *args)
     cmd = []
-    cmd << Rails.application.config.ppcoind
+    cmd << FaucetConfig["ppcoind_path"]
     cmd << command.to_s
     cmd += args
     cmd.map!(&:to_s)

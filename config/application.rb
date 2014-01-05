@@ -28,7 +28,5 @@ module PeercoinFaucet
     config.sass.preferred_syntax = :sass
 
     config.autoload_paths += %W(#{config.root}/lib)
-    
-    config.ppcoind = "ppcoind"
   end
 end
