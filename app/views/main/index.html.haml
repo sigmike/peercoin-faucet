@@ -62,7 +62,7 @@
           %th.confirmations Confirmations
           %th.fee Fee
       %tbody
-        - (@state.last_transactions || []).each do |transaction|
+        - (@state.last_transactions || []).reverse.each do |transaction|
           %tr.transaction-row
             %td.date= l(Time.zone.at(transaction["time"]), format: :short)
             %td.category= transaction["category"].humanize
