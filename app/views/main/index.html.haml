@@ -1,15 +1,25 @@
+- currency = @state.testnet? ? "testnet peercoin" : "peercoin"
+
 %header.main-header
   .header-content
-    %h1.title Peercoin Faucet
-    %p.intro On this site you can give or receive free Peercoins
+    %h1.title
+      - if @state.testnet?
+        Peercoin Testnet Faucet
+      - else
+        Peercoin Faucet
+    %p.intro
+      On this site you can give or receive free #{currency.pluralize}
+    - if @state.testnet?
+      .testnet-warning
+        .content Testnet peercoins are not real peercoins. There are only useful for developpers and have absolutely no monetary value!
 %section.main-content
   %article.receive-section
     .content
-      %h2.title Receive Peercoins
+      %h2.title Receive #{currency.pluralize}
       %p.description
-        You can receive #{FaucetConfig["amount_per_request"]} peercoins just by filling the form below.
+        You can receive #{pluralize FaucetConfig["amount_per_request"], currency} just by filling the form below.
         %br
-        The peercoins are given by donators. Your request will only be processed if enough peercoins are available.
+        The peercoins are given by donators. Your request will only be processed if enough #{currency.pluralize} are available.
 
       .receive-form
         = form_for @coin_request, url: url_for do |f|
@@ -20,13 +30,13 @@
                 - @coin_request.errors.full_messages.each do |error|
                   .error= error
           .address-field
-            = f.label :address, "Your peercoin address"
+            = f.label :address, "Your #{currency} address"
             = f.text_field :address
           - if FaucetConfig["captcha"]
             .captcha
               = recaptcha_tags ssl: request.ssl?, ajax: true
           .submit
-            = f.submit "Receive peercoins"
+            = f.submit "Receive #{currency.pluralize}"
       %p.limit-notice
         Your IP is limited to 1 request every #{distance_of_time_in_words FaucetConfig.request_time_frame_duration}.
   %article.give-section
@@ -36,7 +46,7 @@
 %section.bottom-section
   %article.state-section
     %h2.title Current state
-    %p.current-balance Balance: #{@state.balance} PPC
+    %p.current-balance Balance: #{pluralize @state.balance, currency}
     %table.transaction-list
       %thead
         %tr

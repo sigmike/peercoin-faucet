@@ -14,4 +14,8 @@ class State < ActiveRecord::Base
     state.info = Peercoin.info
     state.save!
   end
+
+  def testnet?
+    info["testnet"]
+  end
 end
