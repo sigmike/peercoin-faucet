@@ -25,7 +25,7 @@ class MainController < ApplicationController
       @coin_request.uniqueness_token = Digest::SHA1.hexdigest(uniqueness_data)
 
       if @coin_request.save
-        redirect_to root_path, flash: {notice: 'Request created'}
+        redirect_to root_path, flash: {success: 'You request was created. It will be processed in the next batch or when enough funds are available'}
       end
     end
     session[:ip] = request.remote_ip
