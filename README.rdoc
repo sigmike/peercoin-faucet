@@ -2,6 +2,11 @@
 
 A Rails application to run a {peercoin}[http://en.wikipedia.org/wiki/Peercoin] {faucet}[https://en.bitcoin.it/wiki/Bitcoin_faucet] website.
 
+Will be available on http://peercoinfaucet.com/ soon.
+
+Right now only the {testnet}[https://en.bitcoin.it/wiki/Testnet] version is available: http://testnet.peercoinfaucet.com/
+
+
 To run your own you need:
 * Ruby 1.9+
 * bundler
