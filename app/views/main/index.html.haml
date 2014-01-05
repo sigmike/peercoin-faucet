@@ -6,6 +6,11 @@
   %article.receive-section
     .content
       %h2.title Receive Peercoins
+      %p.description
+        You can receive #{FaucetConfig["amount_per_request"]} peercoins just by filling the form below.
+        %br
+        The peercoins are given by donators. Your request will only be processed if enough peercoins are available.
+
       .receive-form
         = form_for @coin_request, url: url_for do |f|
           - if @coin_request.errors.any?
@@ -15,13 +20,15 @@
                 - @coin_request.errors.full_messages.each do |error|
                   .error= error
           .address-field
-            = f.label :address, "Your Peercoin address"
+            = f.label :address, "Your peercoin address"
             = f.text_field :address
           - if FaucetConfig["captcha"]
             .captcha
               = recaptcha_tags ssl: request.ssl?, ajax: true
           .submit
-            = f.submit "Receive Peercoins"
+            = f.submit "Receive peercoins"
+      %p.limit-notice
+        Your IP is limited to 1 request every #{distance_of_time_in_words FaucetConfig.request_time_frame_duration}.
   %article.give-section
     .content
       %h2.title Give Peercoins
