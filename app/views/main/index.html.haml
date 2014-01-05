@@ -19,7 +19,7 @@
       %p.description
         You can receive #{pluralize FaucetConfig["amount_per_request"], currency} just by filling the form below.
         %br
-        The peercoins are given by donators. Your request will only be processed if enough #{currency.pluralize} are available.
+        The #{currency.pluralize} are given by donators. Your request will only be processed if enough #{currency.pluralize} are available.
 
       .receive-form
         = form_for @coin_request, url: url_for do |f|
