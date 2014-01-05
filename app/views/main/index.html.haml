@@ -4,21 +4,23 @@
     %p.intro On this site you can give or receive free Peercoins
 %section.main-content
   %article.receive-section
-    %h2.title Receive Peercoins
-    .receive-form
-      = form_for @coin_request, url: url_for do |f|
-        - if @coin_request.errors.any?
-          %ul.errors
-            - @coin_request.errors.full_messages.each do |error|
-              %li.error= error
-        = f.label :address
-        = f.text_field :address
-        - if FaucetConfig["captcha"]
-          = recaptcha_tags ssl: request.ssl?, ajax: true
-        = f.submit "Receive Peercoins"
+    .content
+      %h2.title Receive Peercoins
+      .receive-form
+        = form_for @coin_request, url: url_for do |f|
+          - if @coin_request.errors.any?
+            %ul.errors
+              - @coin_request.errors.full_messages.each do |error|
+                %li.error= error
+          = f.label :address
+          = f.text_field :address
+          - if FaucetConfig["captcha"]
+            = recaptcha_tags ssl: request.ssl?, ajax: true
+          = f.submit "Receive Peercoins"
   %article.give-section
-    %h2.title Give Peercoins
-    %p.address Address: #{@state.address}
+    .content
+      %h2.title Give Peercoins
+      %p.address Address: #{@state.address}
 %section.bottom-section
   %article.state-section
     %h2.title Current state
