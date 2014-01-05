@@ -41,7 +41,7 @@
         Your IP is limited to 1 request every #{distance_of_time_in_words FaucetConfig.request_time_frame_duration}.
   %article.give-section
     .content
-      %h2.title Give Peercoins
+      %h2.title Give #{currency.pluralize}
       %p.address Address: #{@state.address}
       %p.description
         Your can give to others by sending #{currency.pluralize} to the address above.
