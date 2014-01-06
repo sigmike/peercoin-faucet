@@ -2,12 +2,8 @@ PeercoinFaucet::Application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  if Peercoin.info["testnet"]
-    root 'main#index'
-    post '/' => 'main#index'
-  else
-    root to: proc { [404, {}, ['Not available yet']] }
-  end
+  root 'main#index'
+  post '/' => 'main#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
