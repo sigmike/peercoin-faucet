@@ -2,8 +2,8 @@
 path = File.expand_path('../../config/config.yml', __FILE__)
 FaucetConfig = YAML.load(File.read(path))
 
-def FaucetConfig.request_time_frame_duration
-  amount, unit = self["request_time_frame_duration"].split
+def FaucetConfig.parse_time(time)
+  amount, unit = time.split
   amount = amount.to_f
   case unit
   when nil, "second", "seconds"
@@ -19,3 +19,14 @@ def FaucetConfig.request_time_frame_duration
   amount.floor
 end
 
+def FaucetConfig.request_time_frame_duration
+  parse_time(self["request_time_frame_duration"])
+end
+
+def FaucetConfig.time_between_request_fulfilling
+  if time = self["time_between_request_fulfilling"]
+    parse_time(time)
+  else
+    request_time_frame_duration
+  end
+end

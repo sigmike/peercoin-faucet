@@ -2,6 +2,7 @@ ppcoind_path: ppcoind
 amount_per_request: 0.1
 minimum_confirmations: 3
 request_time_frame_duration: 1 hour
+time_between_request_fulfilling: 30 minutes
 secret: GENERATE A SECRET WITH "rake secret" AND PASTE IT HERE
 captcha: true
 recaptcha:

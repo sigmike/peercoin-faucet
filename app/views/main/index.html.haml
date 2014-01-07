@@ -39,6 +39,8 @@
             = f.submit "Receive #{currency.pluralize}"
       %p.limit-notice
         Your IP is limited to 1 request every #{distance_of_time_in_words FaucetConfig.request_time_frame_duration}.
+        %br
+        Requests are fulfilled every #{distance_of_time_in_words FaucetConfig.time_between_request_fulfilling}.
   %article.give-section
     .content
       %h2.title Give #{currency.pluralize}
