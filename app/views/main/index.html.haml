@@ -18,8 +18,6 @@
       %h2.title Receive #{currency.pluralize}
       %p.description
         You can receive #{pluralize FaucetConfig["amount_per_request"], currency} just by filling the form below.
-        %br
-        The #{currency.pluralize} are given by donators. Your request will only be processed if enough #{currency.pluralize} are available.
 
       .receive-form
         = form_for @coin_request, url: url_for do |f|
@@ -40,7 +38,7 @@
       %p.limit-notice
         Your IP is limited to 1 request every #{distance_of_time_in_words FaucetConfig.request_time_frame_duration}.
         %br
-        Requests are fulfilled every #{distance_of_time_in_words FaucetConfig.time_between_request_fulfilling}.
+        Requests are fulfilled every #{distance_of_time_in_words FaucetConfig.time_between_request_fulfilling} if there is enough #{currency} given by donators.
   %article.give-section
     .content
       %h2.title Give #{currency.pluralize}
