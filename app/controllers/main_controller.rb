@@ -14,6 +14,14 @@ class MainController < ApplicationController
 
       ip = request.remote_ip
 
+      dnsbl= DNSBL::Client.new
+      matches = dnsbl.lookup(ip)
+      if matches.any?
+        message = "Your IP is blacklisted for the following reason(s): " + matches.map { |match| "#{match.meaning} (#{match.dnsbl})" }.join(", ")
+        redirect_to root_path, flash: {error: message}
+        return
+      end
+
       # Ensure the client can actually receive data at this IP
       # (session cookie is signed, so it cannot be forged)
       raise "Invalid IP" unless session[:ip] == ip

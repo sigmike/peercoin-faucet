@@ -51,3 +51,4 @@ gem 'pg', group: :production
 gem 'whenever'
 gem 'foundation-rails'
 gem "recaptcha", :require => "recaptcha/rails"
+gem 'dnsbl-client'

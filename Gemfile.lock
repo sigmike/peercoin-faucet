@@ -42,6 +42,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    dnsbl-client (1.0.0)
     erubis (2.7.0)
     execjs (2.0.2)
     foundation-rails (5.0.2.0)
@@ -136,6 +137,7 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
+  dnsbl-client
   foundation-rails
   haml-rails
   jbuilder (~> 1.2)
