@@ -13,6 +13,12 @@ def FaucetConfig.parse_time(time)
     amount *= 3600
   when "day", "days"
     amount *= 24 * 3600
+  when "week", "weeks"
+    amount *= 7 * 24 * 3600
+  when "month", "months"
+    amount *= 30 * 24 * 3600
+  when "year", "years"
+    amount *= 365 * 24 * 3600
   else
     raise "Invalid time unit: #{unit.inspect}"
   end
