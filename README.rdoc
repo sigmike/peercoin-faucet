@@ -48,10 +48,10 @@ You can also give and receive peercoins on the {testnet}[https://en.bitcoin.it/w
     cp config/config.yml{.example,}
 * Edit +config.yml+ (see below)
 * Initialize the database
-    bundle exec rake db:migrate -e production
+    RAILS_ENV=production bundle exec rake db:migrate
 * Make sure +ppcoind+ is running with RPC enabled
 * Run the server
-    bundle exec rails server -e production
+    RAILS_ENV=production bundle exec rails server
 * Connect to the server at http://localhost:3000/
 
 To make it run in production I recommend {Phusion Passenger}[https://www.phusionpassenger.com/] with {Apache}[http://www.modrails.com/documentation/Users%20guide%20Apache.html] or {nginx}[http://www.modrails.com/documentation/Users%20guide%20Nginx.html].
