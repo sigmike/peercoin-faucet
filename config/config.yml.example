@@ -1,4 +1,5 @@
 ppcoind_path: ppcoind
+ppcoind_account: ""
 amount_per_request: 0.1
 minimum_confirmations: 3
 request_time_frame_duration: 1 hour

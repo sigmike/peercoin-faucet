@@ -6,15 +6,78 @@ Available on http://peercoinfaucet.com
 
 You can also give and receive peercoins on the {testnet}[https://en.bitcoin.it/wiki/Testnet] blockchain on http://testnet.peercoinfaucet.com
 
+== Installation
 
-To run your own you need:
-* Ruby 1.9+
-* bundler
-* ppcoind running
-* config/config.yml (see config/config.yml.example)
-* a database and config/database.yml configured
+* Install {Ruby}[https://www.ruby-lang.org/en/downloads/] 1.9+
+* Install the {bundler}[http://bundler.io/] gem (you may need root):
+    gem install bundler
+* Install {git}[http://git-scm.com/downloads]
+* Clone the repository
+    git clone https://github.com/sigmike/peercoin-faucet.git
+    cd peercoin-faucet
+* Decide a database backend:
+  * sqlite3: easiest to setup, only install the sqlite3 development libraries and you're ready, but may not be good enough for production
+  * postgresql or mysql: install the development libraries, and create a database
+* Install the gems without the databases you don't want. Examples:
+    bundle install --without mysql postgresql
+    bundle install --without sqlite3 mysql
+* Create +database.yml+.
+  * Example for sqlite3:
+      production:
+        adapter: sqlite3
+        database: db/production.sqlite3
+        pool: 5
+        timeout: 5000
+  * Example for postgresql:
+      production:
+        adapter: postgresql
+        host: localhost
+        database: peercoin_faucet
+        username: peercoin_faucet
+        password: password
+        encoding: unicode
+        pool: 5
+  * Example for mysql:
+      production:
+        adapter: mysql2
+        database: peercoin_faucet
+        host: localhost
+        username: peercoin_faucet
+        password: password
+* Create +config.yml+
+    cp config/config.yml{.example,}
+* Edit +config.yml+ (see below)
+* Initialize the database
+    bundle exec rake db:migrate -e production
+* Make sure +ppcoind+ is running with RPC enabled
+* Run the server
+    bundle exec rails server -e production
+* Connect to the server at http://localhost:3000/
 
-These instructions are not complete. Please create an issue or send me an email if you want to run your own faucet. It should motivate me to write a complete guide.
+To make it run in production I recommend {Phusion Passenger}[https://www.phusionpassenger.com/] with {Apache}[http://www.modrails.com/documentation/Users%20guide%20Apache.html] or {nginx}[http://www.modrails.com/documentation/Users%20guide%20Nginx.html].
+
+To fulfill request and update state, commands must be run frequently with cron. To display the cron you must use, run:
+  bundle exec whenever -s "environment=production"
+To automatically setup your cron, run:
+  bundle exec whenever --update-crontab -s "environment=production"
+
+== Configuration
+
+Sample config file:
+  :include: config/config.yml.example
+
+[ppcoind_path] Path to the ppcoind executable.
+[ppcoind_account] The account on ppcoind used to determine the peercoin address, balance and to make transactions. The default account is the empty string "".
+[amount_per_request] Amount given to each request.
+[minimum_confirmations] Minimum confirmations to determine balance.
+[request_time_frame_duration] Current time is divided in steps of this duration. An IP cannot create two requests in the same time frame. Format: "<amount> <unit>" where unit can be second, minute, hour, week, month or year (plural form is allowed).
+[time_between_request_fulfilling] Requests will be processed at this frequency. Same format as +request_time_frame_duration+.
+[secret] A random string used to sign cookies and prevent session forging. Run +bundle exec rake secret+ to generate one and paste it there.
+[captcha] Set to false to remove the captcha.
+[recaptcha] Set your public and private keys here if you enabled the captcha.
+[donation_address] The address to receive donations. This is not the faucet address. The faucet address is determined automatically.
+[donation_currency] The currency you want to receive donations.
+[tracking_code] The visitor tracking code. Copy/paste the code provided by Google Analytics or your other tracker.
 
 == Author
 

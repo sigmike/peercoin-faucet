@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.2'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3', group: [:development, :test]
+gem 'sqlite3', group: :sqlite3
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -47,7 +47,8 @@ end
 gem 'haml-rails'
 gem 'therubyracer'
 gem 'secret_token_replacer', :git => 'git://github.com/digineo/secret_token_replacer.git'
-gem 'pg', group: :production
+gem 'pg', group: :postgresql
+gem 'mysql', group: :mysql
 gem 'whenever'
 gem 'foundation-rails'
 gem "recaptcha", :require => "recaptcha/rails"
