@@ -30,7 +30,9 @@
   +grid-row
   
   .receive-section, .give-section
-    +grid-column(6)
+    +grid-column(12)
+    @media (min-width: 790px)
+      +grid-column(6)
 
     > .content
       +panel
@@ -77,3 +79,7 @@
     .links
       +panel
       text-align: center
+
+@media #{$small-only}
+  .github-ribbon
+    display: none
