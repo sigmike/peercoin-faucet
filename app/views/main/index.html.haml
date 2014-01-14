@@ -45,9 +45,6 @@
       %p.address Address: #{@state.address}
       %p.description
         Your can give to others by sending #{currency.pluralize} to the address above.
-      - if FaucetConfig["donation_address"]
-        %p.donate
-          If you want to donate to this website, you can also send #{@state.testnet? ? "real" : ""} #{FaucetConfig["donation_currency"]} to #{FaucetConfig["donation_address"]}
 %section.bottom-section
   %article.state-section
     %h2.title Current state

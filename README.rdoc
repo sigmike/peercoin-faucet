@@ -90,8 +90,6 @@ Sample config file:
 [secret] A random string used to sign cookies and prevent session forging. Run +bundle exec rake secret+ to generate one and paste it there.
 [captcha] Set to false to remove the captcha.
 [recaptcha] Set your public and private keys here if you enabled the captcha.
-[donation_address] The address to receive donations. This is not the faucet address. The faucet address is determined automatically.
-[donation_currency] The currency you want to receive donations.
 [tracking_code] The visitor tracking code. Copy/paste the code provided by Google Analytics or your other tracker.
 [canonical_host] Optional forced hostname for the website. Access to the website using another hostname will redirect to this hostname (see https://github.com/tylerhunt/rack-canonical-host).
 
