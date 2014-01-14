@@ -79,6 +79,7 @@ Sample config file:
   donation_currency: peercoins
   tracking_code: >
     <!-- REPLACE WITH YOUR TRAFFIC TRACKING CODE -->
+  canonical_host: example.com
 
 [ppcoind_path] Path to the ppcoind executable.
 [ppcoind_account] The account on ppcoind used to determine the peercoin address, balance and to make transactions. The default account is the empty string "".
@@ -92,6 +93,7 @@ Sample config file:
 [donation_address] The address to receive donations. This is not the faucet address. The faucet address is determined automatically.
 [donation_currency] The currency you want to receive donations.
 [tracking_code] The visitor tracking code. Copy/paste the code provided by Google Analytics or your other tracker.
+[canonical_host] Optional forced hostname for the website. Access to the website using another hostname will redirect to this hostname (see https://github.com/tylerhunt/rack-canonical-host).
 
 == Author
 

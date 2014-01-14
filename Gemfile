@@ -53,3 +53,4 @@ gem 'whenever'
 gem 'foundation-rails'
 gem "recaptcha", :require => "recaptcha/rails"
 gem 'dnsbl-client'
+gem 'rack-canonical-host'
