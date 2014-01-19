@@ -19,12 +19,12 @@
 
 # Learn more: http://github.com/javan/whenever
 
+require File.expand_path('../../lib/faucet_config', __FILE__)
 every :reboot do
-  command File.expand_path("../../../ppcoin/src/ppcoind", __FILE__)
+  command FaucetConfig['ppcoind_path']
   rake "update_state:loop"
 end
 
-require File.expand_path('../../lib/faucet_config', __FILE__)
 every FaucetConfig.time_between_request_fulfilling do
   rake "fulfill"
 end
