@@ -1,9 +1,10 @@
 - currency = FaucetConfig["currency"] || (@state.testnet? ? "testnet peercoin" : "peercoin")
+- title = "#{currency} faucet".titleize
+- content_for(:title, title)
 
 %header.main-header
   .header-content
-    %h1.title
-      = "#{currency} faucet".titleize
+    %h1.title= title
     %p.intro
       On this site you can give or receive free #{currency.pluralize}
     - if @state.testnet?
