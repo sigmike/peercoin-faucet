@@ -1,4 +1,4 @@
-- currency = @state.testnet? ? "testnet peercoin" : "peercoin"
+- currency = FaucetConfig["currency"] || (@state.testnet? ? "testnet peercoin" : "peercoin")
 
 %header.main-header
   .header-content
