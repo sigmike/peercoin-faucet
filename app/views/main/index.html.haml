@@ -3,7 +3,7 @@
 %header.main-header
   .header-content
     %h1.title
-      = "#{currency} faucet".capitalize
+      = "#{currency} faucet".titleize
     %p.intro
       On this site you can give or receive free #{currency.pluralize}
     - if @state.testnet?
