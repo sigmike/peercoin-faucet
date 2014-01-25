@@ -1,4 +1,6 @@
 class MainController < ApplicationController
+  BLOCKED_DNSBL = YAML.load(Rails.root.join("config/blocked_dnsbl.yaml").read)
+
   def index
     @state = State.instance
 
@@ -16,6 +18,10 @@ class MainController < ApplicationController
 
       dnsbl= DNSBL::Client.new
       matches = dnsbl.lookup(ip)
+      matches.select! do |match|
+        blocked_results = BLOCKED_DNSBL[match.dnsbl]
+        blocked_results and blocked_results.has_key?(match.result)
+      end
       if matches.any?
         message = "Your IP is blacklisted for the following reason(s): " + matches.map { |match| "#{match.meaning} (#{match.dnsbl})" }.join(", ")
         redirect_to root_path, flash: {error: message}
