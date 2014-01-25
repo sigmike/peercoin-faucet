@@ -28,5 +28,7 @@ module PeercoinFaucet
     config.sass.preferred_syntax = :sass
 
     config.autoload_paths += %W(#{config.root}/lib)
+
+    config.assets.precompile += %w( vendor/modernizr.js )
   end
 end
