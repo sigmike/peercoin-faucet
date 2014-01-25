@@ -73,14 +73,15 @@
             %td.address= transaction["address"]
             %td.confirmations= transaction["confirmations"]
             %td.fee= transaction["fee"]
-    %p.pending-requests-intro Pending requests:
+    - pending_requests = CoinRequest.not_fulfilled
+    %p.pending-requests-intro Pending requests (#{pending_requests.size}):
     %table.pending-requests
       %thead
         %tr
           %th.date Date (UTC)
           %th.address Address
       %tbody
-        - CoinRequest.not_fulfilled.each do |request|
+        - pending_requests.each do |request|
           %tr.request-row
             %td.date= l(request.created_at, format: :short)
             %td.address= request.address
