@@ -80,6 +80,7 @@ Sample config file:
   tracking_code: >
     <!-- REPLACE WITH YOUR TRAFFIC TRACKING CODE -->
   canonical_host: example.com
+  donation_request_url: http://example.com/
 
 [ppcoind_path] Path to the ppcoind executable.
 [ppcoind_account] The account on ppcoind used to determine the peercoin address, balance and to make transactions. The default account is the empty string "".
@@ -92,6 +93,7 @@ Sample config file:
 [recaptcha] Set your public and private keys here if you enabled the captcha.
 [tracking_code] The visitor tracking code. Copy/paste the code provided by Google Analytics or your other tracker.
 [canonical_host] Optional forced hostname for the website. Access to the website using another hostname will redirect to this hostname (see https://github.com/tylerhunt/rack-canonical-host).
+[donation_request_url] The link that will be displayed when the faucet is empty.
 
 == Author
 

@@ -18,4 +18,8 @@ class State < ActiveRecord::Base
   def testnet?
     info["testnet"]
   end
+
+  def empty?
+    balance <= FaucetConfig["amount_per_request"]
+  end
 end

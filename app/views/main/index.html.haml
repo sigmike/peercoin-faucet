@@ -17,6 +17,13 @@
       %p.description
         You can receive #{pluralize FaucetConfig["amount_per_request"], currency} just by filling the form below.
 
+      - if @state.empty?
+        .empty-faucet-warning
+          %p
+            %strong Warning:
+            The faucet is empty. Your request will not be processed until new coins are donated.
+          - if (url = FaucetConfig["donation_request_url"]).present?
+            %p You can request donations #{link_to "here", url}.
       .receive-form
         = form_for @coin_request, url: url_for do |f|
           - if @coin_request.errors.any?

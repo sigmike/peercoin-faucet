@@ -12,3 +12,4 @@ recaptcha:
 tracking_code: >
   <!-- REPLACE WITH YOUR TRAFFIC TRACKING CODE -->
 canonical_host: 
+donation_request_url: 
