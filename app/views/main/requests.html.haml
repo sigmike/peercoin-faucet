@@ -5,7 +5,7 @@
   .header-content
     %h1.title= title
 %section.main-content
-  - @requests = CoinRequest.all
+  - @requests = CoinRequest.order('created_at DESC').paginate(page: params[:page], per_page: params[:per_page] || 50)
   %table.request-table
     %thead
       %tr
@@ -24,3 +24,4 @@
               = request.address
           %td.sent
             = request.fulfilled? ? "Yes" : "No"
+  = will_paginate(@requests)

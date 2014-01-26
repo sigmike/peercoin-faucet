@@ -54,3 +54,5 @@ gem 'foundation-rails'
 gem "recaptcha", :require => "recaptcha/rails"
 gem 'dnsbl-client'
 gem 'rack-canonical-host'
+gem 'will_paginate'
+gem 'foundation-will_paginate'
