@@ -5,7 +5,7 @@
   .header-content
     %h1.title= title
 %section.main-content
-  - @requests = CoinRequest.order('created_at DESC').paginate(page: params[:page], per_page: params[:per_page] || 50)
+  - @requests = CoinRequest.order('created_at DESC').paginate(page: params[:page], per_page: params[:per_page] || 200)
   %table.request-table
     %thead
       %tr
