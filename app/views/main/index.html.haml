@@ -85,6 +85,7 @@
           %tr.request-row
             %td.date= l(request.created_at, format: :short)
             %td.address= request.address
+    .all-requests-link= link_to "All requests", requests_path
 %footer#footer
   .content
     .links
