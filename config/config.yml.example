@@ -13,3 +13,4 @@ tracking_code: >
   <!-- REPLACE WITH YOUR TRAFFIC TRACKING CODE -->
 canonical_host: 
 donation_request_url: 
+explorer_url: http://ppc.cryptocoinexplorer.com/address/{{ADDRESS}}

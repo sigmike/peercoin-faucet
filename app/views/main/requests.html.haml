@@ -1,0 +1,19 @@
+- @requests = CoinRequest.all
+%table.request-table
+  %thead
+    %tr
+      %th.date Date
+      %th.address Address
+      %th.sent Sent
+  %tbody
+    - @requests.each do |request|
+      %tr
+        %td.date= l(request.created_at)
+        %td.address
+          - if (url = FaucetConfig["explorer_url"]).present?
+            - url = url.sub("{{ADDRESS}}", request.address)
+            = link_to request.address, url
+          - else
+            = request.address
+        %td.sent
+          = request.fulfilled? ? "Yes" : "No"

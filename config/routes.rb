@@ -4,6 +4,7 @@ PeercoinFaucet::Application.routes.draw do
 
   root 'main#index'
   post '/' => 'main#index'
+  get '/requests' => 'main#requests', as: :requests
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
