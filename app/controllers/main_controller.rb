@@ -1,9 +1,9 @@
 class MainController < ApplicationController
   BLOCKED_DNSBL = YAML.load(Rails.root.join("config/blocked_dnsbl.yaml").read)
 
-  def index
-    @state = State.instance
+  before_filter :get_state
 
+  def index
     @coin_request = CoinRequest.new
     @coin_request.attributes = params[:coin_request].permit(:address) if params[:coin_request]
     if request.post? or request.put?
@@ -46,4 +46,8 @@ class MainController < ApplicationController
   end
 
   protected
+  def get_state
+    @state = State.instance
+    @currency = FaucetConfig["currency"] || (@state.testnet? ? "testnet peercoin" : "peercoin")
+  end
 end
