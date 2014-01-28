@@ -1,4 +1,5 @@
 class CoinRequest < ActiveRecord::Base
+  before_validation :strip_address
   validate :validate_address
   validates_presence_of :uniqueness_token
   validates_uniqueness_of :uniqueness_token
@@ -7,6 +8,10 @@ class CoinRequest < ActiveRecord::Base
   scope :fulfilled, -> { where(fulfilled: true) }
   scope :not_fulfilled, -> { where(fulfilled: false) }
   scope :first_in_first, -> { order(:created_at) }
+
+  def strip_address
+    self.address = self.address.strip if self.address
+  end
 
   def validate_address
     unless Peercoin.address_valid?(address)
