@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/ambethia/recaptcha.git
+  revision: 76c2f58ee906ed591662d552c6be383024af11d6
+  specs:
+    recaptcha (0.3.6)
+
+GIT
   remote: git://github.com/digineo/secret_token_replacer.git
   revision: 34b37678e87c8e87632e37c7b3f5d1b17d15b76b
   specs:
@@ -98,7 +104,6 @@ GEM
     rake (10.1.1)
     rdoc (3.12.2)
       json (~> 1.4)
-    recaptcha (0.3.5)
     ref (1.0.5)
     sass (3.2.13)
     sass-rails (4.0.1)
@@ -154,7 +159,7 @@ DEPENDENCIES
   pg
   rack-canonical-host
   rails (= 4.0.2)
-  recaptcha
+  recaptcha!
   sass-rails (~> 4.0.0)
   sdoc
   secret_token_replacer!
